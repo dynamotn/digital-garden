@@ -1,3 +1,62 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+.home-web {
+  div.table-container {
+    overflow-x: inherit;
+
+    table {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      > thead {
+        display: none;
+      }
+
+      > tbody {
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+
+        > tr {
+          border-radius: 10px;
+          width: calc(50% - 20px);
+          padding: 10px;
+          position: relative;
+          display: block;
+          border: 0;
+
+          @media screen and (max-width: 667px) {
+            width: 100%;
+          }
+
+          > td {
+            display: block;
+            border: 0;
+            padding: 0;
+
+            > img {
+              object-fit: cover;
+              width: 100%;
+              max-width: none;
+              max-height: 150px;
+              aspect-ratio: 16 / 9;
+            }
+
+            > a > span {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
