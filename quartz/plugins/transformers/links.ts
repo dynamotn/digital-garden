@@ -121,6 +121,15 @@ export const CrawlLinks: QuartzTransformerPlugin<Partial<Options>> = (userOpts) 
                   const simple = simplifySlug(full)
                   outgoing.add(simple)
                   node.properties["data-slug"] = full
+
+                  node.children.push({
+                    type: "element",
+                    tagName: "span",
+                    properties: {
+                      ["aria-hidden"]: "true",
+                    },
+                    children: [],
+                  })
                 }
 
                 // rewrite link internals if prettylinks is on
