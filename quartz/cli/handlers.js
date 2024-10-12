@@ -421,6 +421,7 @@ export async function handleBuild(argv) {
     chokidar
       .watch(["**/*.ts", "**/*.tsx", "**/*.scss", "package.json"], {
         ignoreInitial: true,
+        followSymlinks: false,
       })
       .on("all", async () => {
         build(clientRefresh)
