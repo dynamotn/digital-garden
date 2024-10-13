@@ -24,6 +24,7 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ContentMeta(),
     Component.TagList(),
   ],
+  afterBody: [Component.Comments()],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
