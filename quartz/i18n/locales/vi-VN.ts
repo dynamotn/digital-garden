@@ -2,41 +2,41 @@ import { Translation } from "./definition"
 
 export default {
   propertyDefaults: {
-    title: "Không có tiêu đề",
+    title: "Vô đề",
     description: "Không có mô tả được cung cấp",
   },
   components: {
     callout: {
-      note: "Ghi Chú",
-      abstract: "Tóm Tắt",
+      note: "Ghi chú",
+      abstract: "Tóm tắt",
       info: "Thông tin",
-      todo: "Cần Làm",
-      tip: "Gợi Ý",
-      success: "Thành Công",
-      question: "Nghi Vấn",
-      warning: "Cảnh Báo",
-      failure: "Thất Bại",
-      danger: "Nguy Hiểm",
+      todo: "Cần làm",
+      tip: "Gợi ý",
+      success: "Thành công",
+      question: "Nghi vấn",
+      warning: "Cảnh báo",
+      failure: "Thất bại",
+      danger: "Nguy hiểm",
       bug: "Lỗi",
-      example: "Ví Dụ",
-      quote: "Trích Dẫn",
+      example: "Ví dụ",
+      quote: "Trích dẫn",
     },
     backlinks: {
-      title: "Liên Kết Ngược",
-      noBacklinksFound: "Không có liên kết ngược được tìm thấy",
+      title: "Liên kết ngược",
+      noBacklinksFound: "Không có liên kết ngược nào",
     },
     themeToggle: {
       lightMode: "Sáng",
       darkMode: "Tối",
     },
     explorer: {
-      title: "Trong bài này",
+      title: "Cùng trên trang này",
     },
     footer: {
-      createdWith: "Được tạo bởi",
+      createdWith: "Được xuất bản bởi Dynamo bằng",
     },
     graph: {
-      title: "Biểu Đồ",
+      title: "Biểu đồ",
     },
     recentNotes: {
       title: "Bài viết gần đây",
@@ -44,14 +44,14 @@ export default {
     },
     transcludes: {
       transcludeOf: ({ targetSlug }) => `Bao gồm ${targetSlug}`,
-      linkToOriginal: "Liên Kết Gốc",
+      linkToOriginal: "Liên kết gốc",
     },
     search: {
-      title: "Tìm Kiếm",
-      searchBarPlaceholder: "Tìm kiếm thông tin",
+      title: "Tìm kiếm",
+      searchBarPlaceholder: "Nhập thông tin tìm kiếm",
     },
     tableOfContents: {
-      title: "Bảng Nội Dung",
+      title: "Mục lục",
     },
     contentMeta: {
       readingTime: ({ minutes }) => `đọc ${minutes} phút`,
@@ -59,24 +59,24 @@ export default {
   },
   pages: {
     rss: {
-      recentNotes: "Những bài gần đây",
+      recentNotes: "Bài viết gần đây",
       lastFewNotes: ({ count }) => `${count} Bài gần đây`,
     },
     error: {
-      title: "Không Tìm Thấy",
-      notFound: "Trang này được bảo mật hoặc không tồn tại.",
+      title: "Không tìm thấy",
+      notFound: "Trang này ở chế độ riêng tư hoặc không tồn tại.",
       home: "Trở về trang chủ",
     },
     folderContent: {
-      folder: "Thư Mục",
+      folder: "Thư mục",
       itemsUnderFolder: ({ count }) =>
-        count === 1 ? "1 mục trong thư mục này." : `${count} mục trong thư mục này.`,
+        count === 1 ? "1 ghi chú trong thư mục này." : `${count} ghi chú trong thư mục này.`,
     },
     tagContent: {
       tag: "Thẻ",
-      tagIndex: "Thẻ Mục Lục",
+      tagIndex: "Mục lục thẻ",
       itemsUnderTag: ({ count }) =>
-        count === 1 ? "1 mục gắn thẻ này." : `${count} mục gắn thẻ này.`,
+        count === 1 ? "1 ghi chú gắn thẻ này." : `${count} ghi chú gắn thẻ này.`,
       showingFirst: ({ count }) => `Hiển thị trước ${count} thẻ.`,
       totalTags: ({ count }) => `Tìm thấy ${count} thẻ tổng cộng.`,
     },
