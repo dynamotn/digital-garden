@@ -8,28 +8,36 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "🪴 Quartz 4.0",
+    pageTitle: "🪴 Dynamo's Digital Garden",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-      provider: "plausible",
+      provider: "google",
+      tagId: "G-BV4BKF074Y",
     },
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    baseUrl: "notes.dynamotn.dev",
+    ignorePatterns: [
+      ".publish",
+      ".publish/**",
+      ".obsidian",
+      ".obsidian/**",
+      "_assets",
+      "_assets/**",
+    ],
     defaultDateType: "created",
     passProtected: {
-      enabled: false,
-      iteration: 2e6,
+      enabled: true,
+      iteration: 3e6,
     },
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: "Merriweather",
+        body: "Roboto",
+        code: "Inconsolata",
       },
       colors: {
         lightMode: {
