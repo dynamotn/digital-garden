@@ -88,6 +88,8 @@ export interface GlobalConfiguration {
   ignorePatterns: string[]
   /** Whether to use created, modified, or published as the default type of date */
   defaultDateType: ValidDateType
+  /** List type of date to show */
+  showDateTypes: "created | modified | published"[]
   /** Password protected page rendering */
   passProtected: PassProtected
   /** Comments for page */

@@ -27,6 +27,7 @@ const config: QuartzConfig = {
       "_assets/**",
     ],
     defaultDateType: "created",
+    showDateTypes: ["created", "modified"],
     passProtected: {
       enabled: true,
       iteration: 3e6,
