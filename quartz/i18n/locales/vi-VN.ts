@@ -54,7 +54,10 @@ export default {
       title: "Mục lục",
     },
     contentMeta: {
-      readingTime: ({ minutes }) => `đọc ${minutes} phút`,
+      readingTime: ({ minutes }) => `thời gian đọc khoảng ${minutes} phút`,
+      created: "tạo lúc",
+      modified: "sửa lúc",
+      published: "xuất bản lúc",
     },
   },
   pages: {
