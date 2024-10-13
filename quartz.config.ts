@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "google",
       tagId: "G-BV4BKF074Y",
     },
-    locale: "en-US",
+    locale: "vi-VN",
     baseUrl: "notes.dynamotn.dev",
     ignorePatterns: [
       ".publish",
