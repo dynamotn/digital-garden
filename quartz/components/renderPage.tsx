@@ -215,7 +215,7 @@ export async function renderPage(
     </div>
   )
 
-  const lang = componentData.fileData.frontmatter?.lang ?? cfg.locale?.split("-")[0] ?? "en"
+  const lang = ctx.language == "" ? cfg.locale?.split("-")[0] : (ctx.language?.split("-")[0] ?? "en")
 
   let content = <Content {...componentData} />
   if (cfg.passProtected?.enabled && componentData.fileData.frontmatter?.password) {
