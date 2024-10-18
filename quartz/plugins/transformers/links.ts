@@ -45,6 +45,7 @@ export const CrawlLinks: QuartzTransformerPlugin<Partial<Options>> = (userOpts) 
 
             const transformOptions: TransformOptions = {
               strategy: opts.markdownLinkResolution,
+              language: ctx.language,
               allSlugs: ctx.allSlugs,
             }
 

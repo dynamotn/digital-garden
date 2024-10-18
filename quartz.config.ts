@@ -17,6 +17,7 @@ const config: QuartzConfig = {
       tagId: "G-BV4BKF074Y",
     },
     locale: "vi-VN",
+    languages: ["vi-VN", "en-US"],
     baseUrl: "notes.dynamotn.dev",
     ignorePatterns: [
       ".publish",

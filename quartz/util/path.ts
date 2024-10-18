@@ -62,7 +62,7 @@ function sluggify(s: string): string {
     .replace(/\/$/, "")
 }
 
-export function slugifyFilePath(fp: FilePath, excludeExt?: boolean): FullSlug {
+export function slugifyFilePath(fp: FilePath, language?: string, excludeExt?: boolean): FullSlug {
   fp = stripSlashes(fp) as FilePath
   let ext = _getFileExtension(fp)
   const withoutFileExt = fp.replace(new RegExp(ext + "$"), "")
@@ -77,7 +77,11 @@ export function slugifyFilePath(fp: FilePath, excludeExt?: boolean): FullSlug {
     slug = slug.replace(/_index$/, "index")
   }
 
-  return (slug + ext) as FullSlug
+  if (language) {
+    language = language + "/"
+  }
+
+  return (language + slug + ext) as FullSlug
 }
 
 export function simplifySlug(fp: FullSlug): SimpleSlug {
@@ -85,7 +89,7 @@ export function simplifySlug(fp: FullSlug): SimpleSlug {
   return (res.length === 0 ? "/" : res) as SimpleSlug
 }
 
-export function transformInternalLink(link: string): RelativeURL {
+export function transformInternalLink(link: string, language: string): RelativeURL {
   let [fplike, anchor] = splitAnchor(decodeURI(link))
 
   const folderPath = isFolderPath(fplike)
@@ -94,7 +98,7 @@ export function transformInternalLink(link: string): RelativeURL {
   let fp = segments.filter((seg) => !isRelativeSegment(seg) && seg !== "").join("/")
 
   // manually add ext here as we want to not strip 'index' if it has an extension
-  const simpleSlug = simplifySlug(slugifyFilePath(fp as FilePath))
+  const simpleSlug = simplifySlug(slugifyFilePath(fp as FilePath, ""))
   const joined = joinSegments(stripSlashes(prefix), stripSlashes(simpleSlug))
   const trail = folderPath ? "/" : ""
   const res = (_addRelativeToStart(joined) + trail + anchor) as RelativeURL
@@ -204,7 +208,7 @@ export interface TransformOptions {
 }
 
 export function transformLink(src: FullSlug, target: string, opts: TransformOptions): RelativeURL {
-  let targetSlug = transformInternalLink(target)
+  let targetSlug = transformInternalLink(target, opts.language)
 
   if (opts.strategy === "relative") {
     return targetSlug as RelativeURL

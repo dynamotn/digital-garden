@@ -16,7 +16,7 @@ export const AliasRedirects: QuartzEmitterPlugin = () => ({
     for (const [_tree, file] of content) {
       const dir = path.posix.relative(argv.directory, path.dirname(file.data.filePath!))
       const aliases = file.data.frontmatter?.aliases ?? []
-      const slugs = aliases.map((alias) => path.posix.join(dir, alias) as FullSlug)
+      const slugs = aliases.map((alias) => path.posix.join(ctx.language, dir, alias) as FullSlug)
       const permalink = file.data.frontmatter?.permalink
       if (typeof permalink === "string") {
         slugs.push(permalink as FullSlug)
@@ -42,7 +42,7 @@ export const AliasRedirects: QuartzEmitterPlugin = () => ({
       const ogSlug = simplifySlug(file.data.slug!)
       const dir = path.posix.relative(argv.directory, path.dirname(file.data.filePath!))
       const aliases = file.data.frontmatter?.aliases ?? []
-      const slugs: FullSlug[] = aliases.map((alias) => path.posix.join(dir, alias) as FullSlug)
+      const slugs: FullSlug[] = aliases.map((alias) => path.posix.join(ctx.language, dir, alias) as FullSlug)
       const permalink = file.data.frontmatter?.permalink
       if (typeof permalink === "string") {
         slugs.push(permalink as FullSlug)
