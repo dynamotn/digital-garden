@@ -12,12 +12,14 @@ export async function parseFiles(
   argv: Argv,
   fps: FilePath[],
   allSlugs: FullSlug[],
+  language: string,
 ) {
   const ctx: BuildCtx = {
     buildId,
     cfg,
     argv,
     allSlugs,
+    language,
   }
   const processor = createProcessor(ctx)
   const parse = createFileParser(ctx, fps)

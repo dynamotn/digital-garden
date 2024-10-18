@@ -27,7 +27,7 @@ export const Assets: QuartzEmitterPlugin = () => {
       for (const fp of fps) {
         const ext = path.extname(fp)
         const src = joinSegments(argv.directory, fp) as FilePath
-        const name = (slugifyFilePath(fp as FilePath, true) + ext) as FilePath
+        const name = (slugifyFilePath(fp as FilePath, ctx.language, true) + ext) as FilePath
 
         const dest = joinSegments(argv.output, name) as FilePath
 
@@ -36,14 +36,14 @@ export const Assets: QuartzEmitterPlugin = () => {
 
       return graph
     },
-    async emit({ argv, cfg }, _content, _resources): Promise<FilePath[]> {
+    async emit({ argv, language, cfg }, _content, _resources): Promise<FilePath[]> {
       const assetsPath = argv.output
       const fps = await filesToCopy(argv, cfg)
       const res: FilePath[] = []
       for (const fp of fps) {
         const ext = path.extname(fp)
         const src = joinSegments(argv.directory, fp) as FilePath
-        const name = (slugifyFilePath(fp as FilePath, true) + ext) as FilePath
+        const name = (slugifyFilePath(fp as FilePath, language, true) + ext) as FilePath
 
         const dest = joinSegments(assetsPath, name) as FilePath
         const dir = path.dirname(dest) as FilePath

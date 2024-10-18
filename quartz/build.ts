@@ -42,16 +42,16 @@ function newBuildId() {
   return Math.random().toString(36).substring(2, 8)
 }
 
-async function buildQuartz(argv: Argv, mut: Mutex, clientRefresh: () => void) {
+async function buildQuartz(argv: Argv, mut: Mutex, clientRefresh: () => void, lang: string) {
   const ctx: BuildCtx = {
     buildId: newBuildId(),
     argv,
     cfg,
     allSlugs: [],
+    language: lang,
   }
 
   const perf = new PerfTimer()
-  const output = argv.output
 
   const pluginCount = Object.values(cfg.plugins).flat().length
   const pluginNames = (key: "transformers" | "filters" | "emitters") =>
@@ -64,9 +64,6 @@ async function buildQuartz(argv: Argv, mut: Mutex, clientRefresh: () => void) {
   }
 
   const release = await mut.acquire()
-  perf.addEvent("clean")
-  await rimraf(path.join(output, "*"), { glob: true })
-  console.log(`Cleaned output directory \`${output}\` in ${perf.timeSince("clean")}`)
 
   perf.addEvent("glob")
   const allFiles = await glob("**/*.*", argv.directory, cfg.configuration.ignorePatterns)
@@ -76,7 +73,7 @@ async function buildQuartz(argv: Argv, mut: Mutex, clientRefresh: () => void) {
   )
 
   const filePaths = fps.map((fp) => joinSegments(argv.directory, fp) as FilePath)
-  ctx.allSlugs = allFiles.map((fp) => slugifyFilePath(fp as FilePath))
+  ctx.allSlugs = allFiles.map((fp) => slugifyFilePath(fp as FilePath, lang))
 
   const parsedFiles = await parseMarkdown(ctx, filePaths)
   const filteredContent = filterContent(ctx, parsedFiles)
@@ -415,7 +412,16 @@ async function rebuildFromEntrypoint(
 
 export default async (argv: Argv, mut: Mutex, clientRefresh: () => void) => {
   try {
-    return await buildQuartz(argv, mut, clientRefresh)
+    const perf = new PerfTimer()
+    const output = argv.output
+    perf.addEvent("clean")
+    await rimraf(path.join(output, "*"), { glob: true })
+    console.log(`Cleaned output directory \`${output}\` in ${perf.timeSince("clean")}`)
+
+    cfg.configuration.languages?.forEach(async (lang) => {
+      cfg.locale = lang
+      await buildQuartz(argv, mut, clientRefresh, lang)
+    })
   } catch (err) {
     trace("\nExiting Quartz due to a fatal error", err as Error)
   }
