@@ -26,6 +26,7 @@ const config: QuartzConfig = {
       "_assets/books/**",
       "_assets/templates/**",
       "_assets/snippets/**",
+      "_assets/draw/scripts/**",
     ],
     defaultDateType: "created",
     showDateTypes: ["created", "modified"],
