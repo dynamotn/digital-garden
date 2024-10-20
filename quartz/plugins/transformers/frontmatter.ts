@@ -3,7 +3,8 @@ import remarkFrontmatter from "remark-frontmatter"
 import { QuartzTransformerPlugin } from "../types"
 import yaml from "js-yaml"
 import toml from "toml"
-import { slugTag } from "../../util/path"
+import path from "path"
+import { slugTag, slugifyFilePath, joinSegments, slugifyFilePath } from "../../util/path"
 import { QuartzPluginData } from "../vfile"
 import { i18n } from "../../i18n"
 
@@ -44,7 +45,7 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options>> = (userOpts)
   const opts = { ...defaultOptions, ...userOpts }
   return {
     name: "FrontMatter",
-    markdownPlugins({ cfg }) {
+    markdownPlugins({ argv, cfg, language }) {
       return [
         [remarkFrontmatter, ["yaml", "toml"]],
         () => {
@@ -57,11 +58,22 @@ export const FrontMatter: QuartzTransformerPlugin<Partial<Options>> = (userOpts)
               },
             })
 
-            if (data.title != null && data.title.toString() !== "") {
-              data.title = data.title.toString()
+            const currentLang = language != "" ? language : cfg.configuration.locale
+            if (data.title != null && data.title[currentLang] !== undefined) {
+              const relativePath = path.posix.relative(argv.directory, file.path)
+              const relativeLanguagePath = path.posix.relative(
+                argv.directory,
+                joinSegments(file.dirname, data.title[currentLang]),
+              )
+              if (relativePath != "index.md") {
+                file.data.slug = slugifyFilePath(relativeLanguagePath, language)
+              }
+              data.title = data.title[currentLang]
             } else {
-              data.title = file.stem ?? i18n(cfg.configuration.locale).propertyDefaults.title
+              data.title = file.stem ?? i18n(currentLang).propertyDefaults.title
             }
+            file.data.dirname = file.dirname
+            file.data.stem = file.stem
 
             const tags = coerceToArray(coalesceAliases(data, ["tags", "tag"]))
             if (tags) data.tags = [...new Set(tags.map((tag: string) => slugTag(tag)))]
