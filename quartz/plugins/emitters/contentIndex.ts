@@ -140,7 +140,7 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
           await write({
             ctx,
             content: generateSiteMap(cfg, linkIndex),
-            slug: "sitemap" as FullSlug,
+            slug: joinSegments(ctx.language, "sitemap") as FullSlug,
             ext: ".xml",
           }),
         )
@@ -151,23 +151,26 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
           await write({
             ctx,
             content: generateRSSFeed(cfg, linkIndex, opts.rssLimit),
-            slug: "index" as FullSlug,
+            slug: joinSegments(ctx.language, "index") as FullSlug,
             ext: ".xml",
           }),
         )
       }
 
-      const fp = joinSegments("static", "contentIndex") as FullSlug
-      const simplifiedIndex = Object.fromEntries(
-        Array.from(linkIndex).map(([slug, content]) => {
-          // remove description and from content index as nothing downstream
-          // actually uses it. we only keep it in the index as we need it
-          // for the RSS feed
-          delete content.description
-          delete content.date
-          return [slug, content]
-        }),
-      )
+      const fp = joinSegments("static", ctx.language, "contentIndex") as FullSlug
+      const simplifiedIndex = {
+        language: ctx.language,
+        pages: Object.fromEntries(
+          Array.from(linkIndex).map(([slug, content]) => {
+            // remove description and from content index as nothing downstream
+            // actually uses it. we only keep it in the index as we need it
+            // for the RSS feed
+            delete content.description
+            delete content.date
+            return [slug, content]
+          }),
+        ),
+      }
 
       emitted.push(
         await write({
