@@ -30,7 +30,7 @@ type Props = {
   sort?: SortFn
 } & QuartzComponentProps
 
-export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort }: Props) => {
+export const PageList: QuartzComponent = ({ ctx, cfg, fileData, allFiles, limit, sort }: Props) => {
   const sorter = sort ?? byDateAndAlphabetical(cfg)
   let list = allFiles.sort(sorter)
   if (limit) {
@@ -49,7 +49,7 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
               <div>
                 {page.dates && (
                   <p class="meta">
-                    <Date date={getDate(cfg, page)!} locale={cfg.locale} />
+                    <Date date={getDate(cfg, page)!} locale={ctx.language} />
                   </p>
                 )}
               </div>

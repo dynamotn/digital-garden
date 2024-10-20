@@ -64,7 +64,7 @@ export const TagPage: QuartzEmitterPlugin<Partial<TagPageOptions>> = (userOpts) 
         for (const tag of tags) {
           graph.addEdge(
             sourcePath,
-            joinSegments(ctx.argv.output, "tags", tag + ".html") as FilePath,
+            joinSegments(ctx.argv.output, ctx.language, "tags", tag + ".html") as FilePath,
           )
         }
       }
@@ -87,8 +87,8 @@ export const TagPage: QuartzEmitterPlugin<Partial<TagPageOptions>> = (userOpts) 
         [...tags].map((tag) => {
           const title =
             tag === "index"
-              ? i18n(cfg.locale).pages.tagContent.tagIndex
-              : `${i18n(cfg.locale).pages.tagContent.tag}: ${tag}`
+              ? i18n(ctx.language).pages.tagContent.tagIndex
+              : `${i18n(ctx.language).pages.tagContent.tag}: ${tag}`
           return [
             tag,
             defaultProcessedContent({
@@ -110,9 +110,10 @@ export const TagPage: QuartzEmitterPlugin<Partial<TagPageOptions>> = (userOpts) 
       }
 
       for (const tag of tags) {
-        const slug = joinSegments("tags", tag) as FullSlug
+        const slug = joinSegments(ctx.language, "tags", tag) as FullSlug
         const externalResources = pageResources(pathToRoot(slug), resources)
         const [tree, file] = tagDescriptions[tag]
+        file.data.slug = slug
         const componentData: QuartzComponentProps = {
           ctx,
           fileData: file.data,
@@ -121,13 +122,14 @@ export const TagPage: QuartzEmitterPlugin<Partial<TagPageOptions>> = (userOpts) 
           children: [],
           tree,
           allFiles,
+          slug: joinSegments("tags", tag),
         }
 
-        const content = await renderPage(cfg, slug, componentData, opts, externalResources)
+        const content = await renderPage(ctx, cfg, slug, componentData, opts, externalResources)
         const fp = await write({
           ctx,
           content,
-          slug: file.data.slug!,
+          slug,
           ext: ".html",
         })
 

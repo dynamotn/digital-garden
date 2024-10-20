@@ -1,22 +1,26 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "../types"
 import { i18n } from "../../i18n"
 
-const EncryptedContent: QuartzComponent = ({ encryptedContent, cfg }: QuartzComponentProps) => {
+const EncryptedContent: QuartzComponent = ({
+  encryptedContent,
+  ctx,
+  cfg,
+}: QuartzComponentProps) => {
   return (
     <>
       <div id="lock">
         <div
           id="msg"
-          data-wrong={i18n(cfg.locale).pages.encryptedContent.wrongPassword}
-          data-modern={i18n(cfg.locale).pages.encryptedContent.modernBrowser}
-          data-empty={i18n(cfg.locale).pages.encryptedContent.noPayload}
+          data-wrong={i18n(ctx.language).pages.encryptedContent.wrongPassword}
+          data-modern={i18n(ctx.language).pages.encryptedContent.modernBrowser}
+          data-empty={i18n(ctx.language).pages.encryptedContent.noPayload}
         >
-          {i18n(cfg.locale).pages.encryptedContent.enterPassword}
+          {i18n(ctx.language).pages.encryptedContent.enterPassword}
         </div>
         <div id="load">
           <p class="spinner"></p>
-          <p id="load-text" data-decrypt={i18n(cfg.locale).pages.encryptedContent.decrypting}>
-            {i18n(cfg.locale).pages.encryptedContent.loading}
+          <p id="load-text" data-decrypt={i18n(ctx.language).pages.encryptedContent.decrypting}>
+            {i18n(ctx.language).pages.encryptedContent.loading}
           </p>
         </div>
         <form class="hidden">
@@ -24,10 +28,10 @@ const EncryptedContent: QuartzComponent = ({ encryptedContent, cfg }: QuartzComp
             type="password"
             class="pwd"
             name="pwd"
-            aria-label={i18n(cfg.locale).pages.encryptedContent.password}
+            aria-label={i18n(ctx.language).pages.encryptedContent.password}
             autofocus
           />
-          <input type="submit" value={i18n(cfg.locale).pages.encryptedContent.submit} />
+          <input type="submit" value={i18n(ctx.language).pages.encryptedContent.submit} />
         </form>
         <pre class="hidden" data-i={cfg.passProtected?.iteration}>
           {encryptedContent}

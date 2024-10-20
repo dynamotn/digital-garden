@@ -18,7 +18,7 @@ const defaultOptions: Options = {
 const TableOfContents: QuartzComponent = ({
   fileData,
   displayClass,
-  cfg,
+  ctx,
 }: QuartzComponentProps) => {
   if (!fileData.toc) {
     return null
@@ -33,7 +33,7 @@ const TableOfContents: QuartzComponent = ({
         aria-controls="toc-content"
         aria-expanded={!fileData.collapseToc}
       >
-        <h3>{i18n(cfg.locale).components.tableOfContents.title}</h3>
+        <h3>{i18n(ctx.language).components.tableOfContents.title}</h3>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -66,14 +66,14 @@ const TableOfContents: QuartzComponent = ({
 TableOfContents.css = modernStyle
 TableOfContents.afterDOMLoaded = script
 
-const LegacyTableOfContents: QuartzComponent = ({ fileData, cfg }: QuartzComponentProps) => {
+const LegacyTableOfContents: QuartzComponent = ({ fileData, ctx }: QuartzComponentProps) => {
   if (!fileData.toc) {
     return null
   }
   return (
     <details id="toc" open={!fileData.collapseToc}>
       <summary>
-        <h3>{i18n(cfg.locale).components.tableOfContents.title}</h3>
+        <h3>{i18n(ctx.language).components.tableOfContents.title}</h3>
       </summary>
       <ul>
         {fileData.toc.map((tocEntry) => (
