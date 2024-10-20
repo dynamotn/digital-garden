@@ -111,7 +111,7 @@ export const TagPage: QuartzEmitterPlugin<Partial<TagPageOptions>> = (userOpts) 
 
       for (const tag of tags) {
         const slug = joinSegments(ctx.language, "tags", tag) as FullSlug
-        const externalResources = pageResources(pathToRoot(slug), resources)
+        const externalResources = pageResources(pathToRoot(slug), resources, ctx.language)
         const [tree, file] = tagDescriptions[tag]
         file.data.slug = slug
         const componentData: QuartzComponentProps = {
