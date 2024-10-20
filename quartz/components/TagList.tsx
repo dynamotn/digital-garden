@@ -1,15 +1,15 @@
-import { pathToRoot, slugTag } from "../util/path"
+import { pathToRoot, slugTag, joinSegments } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
 
-const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
+const TagList: QuartzComponent = ({ ctx, fileData, displayClass }: QuartzComponentProps) => {
   const tags = fileData.frontmatter?.tags
-  const baseDir = pathToRoot(fileData.slug!)
+  const baseDir = pathToRoot(joinSegments(ctx.language, fileData.slug!))
   if (tags && tags.length > 0) {
     return (
       <ul class={classNames(displayClass, "tags")}>
         {tags.map((tag) => {
-          const linkDest = baseDir + `/tags/${slugTag(tag)}`
+          const linkDest = joinSegments(baseDir, ctx.language, `/tags/${slugTag(tag)}`)
           return (
             <li>
               <a href={linkDest} class="internal tag-link">
@@ -39,7 +39,7 @@ TagList.css = `
 .section-li > .section > .tags {
   justify-content: flex-end;
 }
-  
+
 .tags > li {
   display: inline-block;
   white-space: nowrap;

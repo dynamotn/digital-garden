@@ -1,4 +1,4 @@
-import { FullSlug, resolveRelative } from "../util/path"
+import { FullSlug, resolveRelative, joinSegments } from "../util/path"
 import { QuartzPluginData } from "../plugins/vfile"
 import { Date, getDate } from "./Date"
 import { QuartzComponent, QuartzComponentProps } from "./types"
@@ -65,7 +65,10 @@ export const PageList: QuartzComponent = ({ ctx, cfg, fileData, allFiles, limit,
                   <li>
                     <a
                       class="internal tag-link"
-                      href={resolveRelative(fileData.slug!, `tags/${tag}` as FullSlug)}
+                      href={resolveRelative(
+                        fileData.slug!,
+                        joinSegments(ctx.language, `tags/${tag}`) as FullSlug,
+                      )}
                     >
                       {tag}
                     </a>
