@@ -8,13 +8,13 @@ interface Options {
 }
 
 export default ((opts?: Options) => {
-  const Footer: QuartzComponent = ({ displayClass, cfg }: QuartzComponentProps) => {
+  const Footer: QuartzComponent = ({ displayClass, ctx }: QuartzComponentProps) => {
     const year = new Date().getFullYear()
     const links = opts?.links ?? []
     return (
       <footer class={`${displayClass ?? ""}`}>
         <p>
-          {i18n(cfg.locale).components.footer.createdWith}{" "}
+          {i18n(ctx.language).components.footer.createdWith}{" "}
           <a href="https://github.com/dynamotn/quartz">Quartz</a> © {year}
         </p>
         <ul>

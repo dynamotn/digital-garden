@@ -420,8 +420,7 @@ export default async (argv: Argv, mut: Mutex, clientRefresh: () => void) => {
     console.log(`Cleaned output directory \`${output}\` in ${perf.timeSince("clean")}`)
 
     cfg.configuration.languages?.forEach(async (lang) => {
-      cfg.locale = lang
-      await buildQuartz(argv, mut, clientRefresh, lang)
+      await buildQuartz(argv, mut, clientRefresh, lang == cfg.configuration.locale ? "" : lang)
     })
   } catch (err) {
     trace("\nExiting Quartz due to a fatal error", err as Error)

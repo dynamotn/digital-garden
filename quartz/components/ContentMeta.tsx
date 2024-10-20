@@ -23,7 +23,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
   // Merge options with defaults
   const options: ContentMetaOptions = { ...defaultOptions, ...opts }
 
-  function ContentMetadata({ cfg, fileData, displayClass }: QuartzComponentProps) {
+  function ContentMetadata({ ctx, cfg, fileData, displayClass }: QuartzComponentProps) {
     const text = fileData.text
 
     if (text) {
@@ -32,7 +32,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
       if (fileData.dates) {
         cfg.showDateTypes?.forEach((type) => {
           segments.push(
-            `${i18n(cfg.locale).components.contentMeta[type]}: ${formatDate(getDate({ defaultDateType: type }, fileData)!, cfg.locale)}`,
+            `${i18n(ctx.language).components.contentMeta[type]}: ${formatDate(getDate({ defaultDateType: type }, fileData)!, ctx.language)}`,
           )
         })
       }
@@ -40,7 +40,7 @@ export default ((opts?: Partial<ContentMetaOptions>) => {
       // Display reading time if enabled
       if (options.showReadingTime) {
         const { minutes, words: _words } = readingTime(text)
-        const displayedTime = i18n(cfg.locale).components.contentMeta.readingTime({
+        const displayedTime = i18n(ctx.language).components.contentMeta.readingTime({
           minutes: Math.ceil(minutes),
         })
         segments.push(displayedTime)

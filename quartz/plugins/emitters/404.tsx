@@ -38,7 +38,7 @@ export const NotFoundPage: QuartzEmitterPlugin = () => {
       const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
       const path = url.pathname as FullSlug
       const externalResources = pageResources(path, resources)
-      const notFound = i18n(cfg.locale).pages.error.title
+      const notFound = i18n(ctx.language).pages.error.title
       const [tree, vfile] = defaultProcessedContent({
         slug,
         text: notFound,
@@ -58,7 +58,7 @@ export const NotFoundPage: QuartzEmitterPlugin = () => {
       return [
         await write({
           ctx,
-          content: await renderPage(cfg, slug, componentData, opts, externalResources),
+          content: await renderPage(ctx, cfg, slug, componentData, opts, externalResources),
           slug,
           ext: ".html",
         }),

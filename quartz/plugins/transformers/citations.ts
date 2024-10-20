@@ -32,7 +32,7 @@ export const Citations: QuartzTransformerPlugin<Partial<Options>> = (userOpts) =
           suppressBibliography: opts.suppressBibliography,
           linkCitations: opts.linkCitations,
           csl: opts.csl,
-          lang: ctx.cfg.configuration.locale ?? "en-US",
+          lang: ctx.cfg.configuration.locale ?? "vi-VN",
         },
       ])
 

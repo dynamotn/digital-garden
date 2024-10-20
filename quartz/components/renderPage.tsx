@@ -9,6 +9,7 @@ import { clone, FullSlug, RelativeURL, joinSegments, normalizeHastElement } from
 import { visit } from "unist-util-visit"
 import { Root, Element, ElementContent } from "hast"
 import { GlobalConfiguration } from "../cfg"
+import { BuildCtx } from "./util/ctx"
 import { i18n } from "../i18n"
 
 interface RenderComponents {
@@ -56,6 +57,7 @@ export function pageResources(
 }
 
 export async function renderPage(
+  ctx: BuildCtx,
   cfg: GlobalConfiguration,
   slug: FullSlug,
   componentData: QuartzComponentProps,
@@ -100,7 +102,7 @@ export async function renderPage(
                 tagName: "a",
                 properties: { href: inner.properties?.href, class: ["internal", "transclude-src"] },
                 children: [
-                  { type: "text", value: i18n(cfg.locale).components.transcludes.linkToOriginal },
+                  { type: "text", value: i18n(ctx.language).components.transcludes.linkToOriginal },
                 ],
               },
             ]
@@ -143,7 +145,7 @@ export async function renderPage(
               tagName: "a",
               properties: { href: inner.properties?.href, class: ["internal", "transclude-src"] },
               children: [
-                { type: "text", value: i18n(cfg.locale).components.transcludes.linkToOriginal },
+                { type: "text", value: i18n(ctx.language).components.transcludes.linkToOriginal },
               ],
             },
           ]
@@ -159,7 +161,7 @@ export async function renderPage(
                   type: "text",
                   value:
                     page.frontmatter?.title ??
-                    i18n(cfg.locale).components.transcludes.transcludeOf({
+                    i18n(ctx.language).components.transcludes.transcludeOf({
                       targetSlug: page.slug!,
                     }),
                 },
@@ -173,7 +175,7 @@ export async function renderPage(
               tagName: "a",
               properties: { href: inner.properties?.href, class: ["internal", "transclude-src"] },
               children: [
-                { type: "text", value: i18n(cfg.locale).components.transcludes.linkToOriginal },
+                { type: "text", value: i18n(ctx.language).components.transcludes.linkToOriginal },
               ],
             },
           ]

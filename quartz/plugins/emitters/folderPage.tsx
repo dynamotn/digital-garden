@@ -91,7 +91,7 @@ export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (user
           defaultProcessedContent({
             slug: joinSegments(folder, "index") as FullSlug,
             frontmatter: {
-              title: `${i18n(cfg.locale).pages.folderContent.folder}: ${folder}`,
+              title: `${i18n(ctx.language).pages.folderContent.folder}: ${folder}`,
               tags: [],
             },
           }),
@@ -119,7 +119,7 @@ export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (user
           allFiles,
         }
 
-        const content = await renderPage(cfg, slug, componentData, opts, externalResources)
+        const content = await renderPage(ctx, cfg, slug, componentData, opts, externalResources)
         const fp = await write({
           ctx,
           content,

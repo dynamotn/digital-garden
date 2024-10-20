@@ -102,7 +102,7 @@ export interface GlobalConfiguration {
   theme: Theme
   /**
    * Allow to translate the date in the language of your choice.
-   * Also used for UI translation (default: en-US)
+   * Also used for UI translation (default: vi-VN)
    * Need to be formated following BCP 47: https://en.wikipedia.org/wiki/IETF_language_tag
    * The first part is the language (en) and the second part is the script/region (US)
    * Language Codes: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
