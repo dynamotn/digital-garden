@@ -48,7 +48,12 @@ function generateSiteMap(cfg: GlobalConfiguration, idx: ContentIndex): string {
   return `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}</urlset>`
 }
 
-function generateRSSFeed(cfg: GlobalConfiguration, idx: ContentIndex, limit?: number): string {
+function generateRSSFeed(
+  cfg: GlobalConfiguration,
+  idx: ContentIndex,
+  limit?: number,
+  language: string,
+): string {
   const base = cfg.baseUrl ?? ""
 
   const createURLEntry = (slug: SimpleSlug, content: ContentDetails): string => `<item>
@@ -75,13 +80,15 @@ function generateRSSFeed(cfg: GlobalConfiguration, idx: ContentIndex, limit?: nu
     .slice(0, limit ?? idx.size)
     .join("")
 
+  const currentLang = language == "" ? cfg.locale : language
+
   return `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
     <channel>
-      <title>${escapeHTML(cfg.pageTitle)}</title>
+      <title>${escapeHTML(cfg.pageTitle[currentLang])}</title>
       <link>https://${base}</link>
-      <description>${!!limit ? i18n(cfg.locale).pages.rss.lastFewNotes({ count: limit }) : i18n(cfg.locale).pages.rss.recentNotes} on ${escapeHTML(
-        cfg.pageTitle,
+      <description>${!!limit ? i18n(currentLang).pages.rss.lastFewNotes({ count: limit }) : i18n(currentLang).pages.rss.recentNotes} on ${escapeHTML(
+        cfg.pageTitle[currentLang],
       )}</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       ${items}
@@ -150,7 +157,7 @@ export const ContentIndex: QuartzEmitterPlugin<Partial<Options>> = (opts) => {
         emitted.push(
           await write({
             ctx,
-            content: generateRSSFeed(cfg, linkIndex, opts.rssLimit),
+            content: generateRSSFeed(cfg, linkIndex, opts.rssLimit, ctx.language),
             slug: joinSegments(ctx.language, "index") as FullSlug,
             ext: ".xml",
           }),

@@ -8,7 +8,10 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "🪴 Dynamo's Digital Garden",
+    pageTitle: {
+      "en-US": "🪴 Dynamo's Digital Garden",
+      "vi-VN": "🪴 Khu vườn số của Dynamo",
+    },
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
