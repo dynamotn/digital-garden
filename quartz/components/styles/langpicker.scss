@@ -1,0 +1,45 @@
+.languagepicker {
+  display: inline-block;
+  height: 40px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  float: left;
+  border-radius: 5px;
+  background-color: var(--lightgray);
+  max-width: 14rem;
+
+  &:hover {
+    height: auto;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: normal;
+  }
+
+  li {
+    display: block;
+    background: transparent;
+
+    padding: 0 0 0 10px;
+    line-height: 40px;
+
+    &:hover {
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    img {
+      margin: 0 10px 0 0;
+      border-radius: 0;
+    }
+  }
+
+  a:first-child li {
+    border: none;
+    background: transparent;
+  }
+}

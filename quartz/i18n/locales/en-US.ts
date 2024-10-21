@@ -1,6 +1,8 @@
 import { Translation } from "./definition"
 
 export default {
+  name: "English - US",
+  icon: "us",
   propertyDefaults: {
     title: "Untitled",
     description: "No description provided",
