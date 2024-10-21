@@ -1,6 +1,7 @@
 .languagepicker {
   display: inline-block;
   height: 40px;
+  min-height: 40px;
   overflow: hidden;
   transition: all 0.3s ease;
   margin: 0;
@@ -13,6 +14,7 @@
 
   &:hover {
     height: auto;
+    min-height: 80px;
   }
 
   a {
