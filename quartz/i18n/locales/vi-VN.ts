@@ -1,6 +1,8 @@
 import { Translation } from "./definition"
 
 export default {
+  name: "Tiếng Việt",
+  icon: "vn",
   propertyDefaults: {
     title: "Vô đề",
     description: "Không có mô tả được cung cấp",
