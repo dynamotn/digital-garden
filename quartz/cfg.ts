@@ -62,6 +62,9 @@ export type Comments =
       strict?: boolean
       reactionsEnabled?: boolean
       inputPosition?: "top" | "bottom"
+      themeUrl?: string
+      lightTheme?: string
+      darkTheme?: string
     }
   | {
       provider: "commento"

@@ -23,6 +23,11 @@ export default (() => {
               data-strict={boolToStringBool(cfg.comments?.strict ?? true)}
               data-reactions-enabled={boolToStringBool(cfg.comments?.reactionsEnabled ?? true)}
               data-input-position={cfg.comments?.inputPosition ?? "bottom"}
+              data-light-theme={cfg.comments?.lightTheme ?? "light"}
+              data-dark-theme={cfg.comments?.darkTheme ?? "dark"}
+              data-theme-url={
+                cfg.comments?.themeUrl ?? `https://${cfg.baseUrl ?? "example.com"}/static/giscus`
+              }
             ></div>
           </div>
         )

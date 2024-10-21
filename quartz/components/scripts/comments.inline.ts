@@ -13,12 +13,33 @@ const changeGiscusTheme = (e: CustomEventMap["themechange"]) => {
     {
       giscus: {
         setConfig: {
-          theme: theme,
+          theme: getThemeUrl(getThemeName(theme)),
         },
       },
     },
     "https://giscus.app",
   )
+}
+
+const getThemeName = (theme: string) => {
+  if (theme !== "dark" && theme !== "light") {
+    return theme
+  }
+  const giscusContainer = document.querySelector(".giscus") as GiscusElement
+  if (!giscusContainer) {
+    return theme
+  }
+  const darkGiscus = giscusContainer.dataset.darkTheme ?? "dark"
+  const lightGiscus = giscusContainer.dataset.lightTheme ?? "light"
+  return theme === "dark" ? darkGiscus : lightGiscus
+}
+
+const getThemeUrl = (theme: string) => {
+  const giscusContainer = document.querySelector(".giscus") as GiscusElement
+  if (!giscusContainer) {
+    return `https://giscus.app/themes/${theme}.css`
+  }
+  return `${giscusContainer.dataset.themeUrl ?? "https://giscus.app/themes"}/${theme}.css`
 }
 
 type GiscusElement = Omit<HTMLElement, "dataset"> & {
@@ -27,6 +48,9 @@ type GiscusElement = Omit<HTMLElement, "dataset"> & {
     repoId: string
     category: string
     categoryId: string
+    themeUrl: string
+    lightTheme: string
+    darkTheme: string
     mapping: "url" | "title" | "og:title" | "specific" | "number" | "pathname"
     strict: string
     reactionsEnabled: string
@@ -54,10 +78,13 @@ function setupGiscus() {
   giscusScript.setAttribute("data-strict", giscusContainer.dataset.strict)
   giscusScript.setAttribute("data-reactions-enabled", giscusContainer.dataset.reactionsEnabled)
   giscusScript.setAttribute("data-input-position", giscusContainer.dataset.inputPosition)
+  giscusScript.setAttribute("data-theme-url", giscusContainer.dataset.themeUrl)
+  giscusScript.setAttribute("data-light-theme", giscusContainer.dataset.lightTheme)
+  giscusScript.setAttribute("data-dark-theme", giscusContainer.dataset.darkTheme)
 
   const theme = document.documentElement.getAttribute("saved-theme")
   if (theme) {
-    giscusScript.setAttribute("data-theme", theme)
+    giscusScript.setAttribute("data-theme", getThemeUrl(getThemeName(theme)))
   }
 
   giscusContainer.appendChild(giscusScript)
