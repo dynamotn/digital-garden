@@ -2,6 +2,7 @@ import { FilePath, FullSlug, joinSegments, resolveRelative, simplifySlug } from 
 import { QuartzEmitterPlugin } from "../types"
 import path from "path"
 import { write } from "./helpers"
+import { slugifyFilePath } from "../../util/path"
 import DepGraph from "../../depgraph"
 
 export const AliasRedirects: QuartzEmitterPlugin = () => ({
@@ -16,7 +17,9 @@ export const AliasRedirects: QuartzEmitterPlugin = () => ({
     for (const [_tree, file] of content) {
       const dir = path.posix.relative(argv.directory, path.dirname(file.data.filePath!))
       const aliases = file.data.frontmatter?.aliases ?? []
-      const slugs = aliases.map((alias) => path.posix.join(ctx.language, dir, alias) as FullSlug)
+      const slugs = aliases.map(
+        (alias) => slugifyFilePath(path.posix.join(dir, alias), ctx.language) as FullSlug,
+      )
       const permalink = file.data.frontmatter?.permalink
       if (typeof permalink === "string") {
         slugs.push(permalink as FullSlug)
@@ -43,7 +46,7 @@ export const AliasRedirects: QuartzEmitterPlugin = () => ({
       const dir = path.posix.relative(argv.directory, path.dirname(file.data.filePath!))
       const aliases = file.data.frontmatter?.aliases ?? []
       const slugs: FullSlug[] = aliases.map(
-        (alias) => path.posix.join(ctx.language, dir, alias) as FullSlug,
+        (alias) => slugifyFilePath(path.posix.join(dir, alias), ctx.language) as FullSlug,
       )
       const permalink = file.data.frontmatter?.permalink
       if (typeof permalink === "string") {
