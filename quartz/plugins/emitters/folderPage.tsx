@@ -78,7 +78,7 @@ export const FolderPage: QuartzEmitterPlugin<Partial<FolderPageOptions>> = (user
         allFiles.flatMap((data) => {
           const slug = data.slug
           const folderName = path.dirname(slug ?? "") as SimpleSlug
-          if (slug && folderName !== "." && folderName !== "tags") {
+          if (slug && folderName !== "." && folderName !== "tags" && folderName !== ctx.language) {
             return [folderName]
           }
           return []
