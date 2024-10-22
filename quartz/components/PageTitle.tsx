@@ -1,4 +1,4 @@
-import { pathToRoot } from "../util/path"
+import { pathToRoot, joinSegments } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
 import { i18n } from "../i18n"
@@ -9,7 +9,7 @@ const PageTitle: QuartzComponent = ({ fileData, ctx, cfg, displayClass }: Quartz
     cfg.pageTitle[currentLang] !== undefined
       ? cfg.pageTitle[currentLang]
       : i18n(ctx.language).propertyDefaults.title
-  const baseDir = pathToRoot(fileData.slug!)
+  const baseDir = joinSegments(pathToRoot(fileData.slug!), ctx.language)
   return (
     <h2 class={classNames(displayClass, "page-title")}>
       <a href={baseDir}>{title}</a>
