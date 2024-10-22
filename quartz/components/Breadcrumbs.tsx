@@ -58,14 +58,19 @@ export default ((opts?: Partial<BreadcrumbOptions>) => {
     fileData,
     allFiles,
     displayClass,
+    ctx,
   }: QuartzComponentProps) => {
     // Hide crumbs on root if enabled
-    if (options.hideOnRoot && fileData.slug === "index") {
+    if (options.hideOnRoot && fileData.slug === `${ctx.language}/index`) {
       return <></>
     }
 
     // Format entry for root element
-    const firstEntry = formatCrumb(options.rootName, fileData.slug!, "/" as SimpleSlug)
+    const firstEntry = formatCrumb(
+      options.rootName,
+      fileData.slug!,
+      `${ctx.language}/` as SimpleSlug,
+    )
     const crumbs: CrumbData[] = [firstEntry]
 
     if (!folderIndex && options.resolveFrontmatterTitle) {
@@ -80,7 +85,11 @@ export default ((opts?: Partial<BreadcrumbOptions>) => {
     }
 
     // Split slug into hierarchy/parts
-    const slugParts = fileData.slug?.split("/")
+    let slugWithoutLang = fileData.slug
+    if (ctx.language != "") {
+      slugWithoutLang = slugWithoutLang.replace(new RegExp(`^${ctx.language}\/`), "")
+    }
+    const slugParts = slugWithoutLang.split("/")
     if (slugParts) {
       // is tag breadcrumb?
       const isTagPath = slugParts[0] === "tags"
