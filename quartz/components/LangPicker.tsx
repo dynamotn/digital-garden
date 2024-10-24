@@ -11,7 +11,7 @@ export default (() => {
       <ul class="languagepicker">
         <li>
           <img src={"https://flagcdn.com/w20/" + i18n(currentLang).icon + ".png"} />
-          {i18n(currentLang).name}
+          <span>{i18n(currentLang).name}</span>
         </li>
         {cfg.languages.map((language) => {
           if (currentLang == language) {
@@ -27,7 +27,7 @@ export default (() => {
             <a href={resolveRelative(fileData.slug!, slug)}>
               <li>
                 <img src={"https://flagcdn.com/w20/" + i18n(language).icon + ".png"} />
-                {i18n(language).name}
+                <span>{i18n(language).name}</span>
               </li>
             </a>
           )

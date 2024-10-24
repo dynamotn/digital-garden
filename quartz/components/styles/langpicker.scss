@@ -1,7 +1,9 @@
+@use "../../styles/variables.scss" as *;
+
 .languagepicker {
   display: inline-block;
-  height: 40px;
-  min-height: 40px;
+  height: 2rem;
+  min-height: 2rem;
   overflow: hidden;
   transition: all 0.3s ease;
   margin: 0;
@@ -11,10 +13,11 @@
   border-radius: 5px;
   background-color: var(--lightgray);
   max-width: 14rem;
+  min-width: 2.5rem;
 
   &:hover {
     height: auto;
-    min-height: 80px;
+    min-height: 4rem;
   }
 
   a {
@@ -27,7 +30,7 @@
     background: transparent;
 
     padding: 0 0 0 10px;
-    line-height: 40px;
+    line-height: 2rem;
 
     &:hover {
       background-color: var(--dark);
@@ -37,6 +40,11 @@
     img {
       margin: 0 10px 0 0;
       border-radius: 0;
+    }
+    span {
+      @media all and ($mobile) {
+        display: none;
+      }
     }
   }
 
