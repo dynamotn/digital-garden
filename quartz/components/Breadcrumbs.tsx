@@ -61,7 +61,10 @@ export default ((opts?: Partial<BreadcrumbOptions>) => {
     ctx,
   }: QuartzComponentProps) => {
     // Hide crumbs on root if enabled
-    if (options.hideOnRoot && fileData.slug === `${ctx.language}/index`) {
+    if (
+      options.hideOnRoot &&
+      (fileData.slug === "index" || fileData.slug === `${ctx.language}/index`)
+    ) {
       return <></>
     }
 
@@ -95,7 +98,7 @@ export default ((opts?: Partial<BreadcrumbOptions>) => {
       const isTagPath = slugParts[0] === "tags"
 
       // full path until current part
-      let currentPath = ""
+      let currentPath = ctx.language
 
       for (let i = 0; i < slugParts.length - 1; i++) {
         let curPathSegment = slugParts[i]
