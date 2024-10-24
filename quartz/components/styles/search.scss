@@ -5,6 +5,7 @@
   max-width: 14rem;
   @media all and ($mobile) {
     flex-grow: 0.3;
+    padding-right: 5px;
   }
 
   & > .search-button {
