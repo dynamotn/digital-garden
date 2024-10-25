@@ -9,7 +9,7 @@ export default (() => {
     const currentLang = ctx.language == "" ? cfg.locale : ctx.language
     return (
       <ul class="languagepicker">
-        <li>
+        <li id="current-lang" data-lang={ctx.language}>
           <img src={"https://flagcdn.com/w20/" + i18n(currentLang).icon + ".png"} />
           <span>{i18n(currentLang).name}</span>
         </li>
@@ -24,7 +24,7 @@ export default (() => {
           )
           const slug = slugifyFilePath(relativePath, language == cfg.locale ? "" : language)
           return (
-            <a href={resolveRelative(fileData.slug!, slug)}>
+            <a href={resolveRelative(fileData.slug!, slug)} slug={slug}>
               <li>
                 <img src={"https://flagcdn.com/w20/" + i18n(language).icon + ".png"} />
                 <span>{i18n(language).name}</span>

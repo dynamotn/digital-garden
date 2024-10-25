@@ -23,6 +23,7 @@ import {
   resolveRelative,
   simplifySlug,
   joinSegments,
+  pathToRoot,
 } from "../../util/path"
 import { D3Config } from "../Graph"
 
@@ -561,6 +562,13 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   addToVisited(simplifySlug(slug))
   await renderGraph("graph-container", slug)
 
+  const language = document.querySelector("#current-lang").dataset.lang
+  if (languageData != language) {
+    const contentIndexPath = joinSegments(pathToRoot(slug), "static", language, "contentIndex.json")
+    fetchData = fetch(contentIndexPath).then((data) => data.json())
+    languageData = language
+    await renderGraph("graph-container", slug)
+  }
   // Function to re-render the graph when the theme changes
   const handleThemeChange = () => {
     renderGraph("graph-container", slug)
