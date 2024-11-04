@@ -1,4 +1,5 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
 // put your custom CSS here!
 .home-web {
@@ -59,4 +60,41 @@
       }
     }
   }
+}
+
+.popover > .popover-inner {
+  font-size: 0.5rem;
+}
+
+.page article > h1 {
+  background: linear-gradient(
+    90deg,
+    var(--blue) 0%,
+    var(--green) 20%,
+    var(--peach) 40%,
+    var(--yellow) 60%,
+    var(--red) 80%,
+    var(--mauve) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: var(--highlight);
+  background-color: var(--dark);
+}
+
+.page article p > strong {
+  background: linear-gradient(
+    90deg,
+    var(--blue) 0%,
+    var(--green) 20%,
+    var(--peach) 40%,
+    var(--yellow) 60%,
+    var(--red) 80%,
+    var(--mauve) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 2px 4px color-mix(in srgb, var(--darkgray) 25%, transparent);
 }
