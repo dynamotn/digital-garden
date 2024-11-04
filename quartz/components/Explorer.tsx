@@ -46,10 +46,14 @@ export default ((userOpts?: Partial<Options>) => {
   let jsonTree: string
   let lastBuildId: string = ""
 
-  function constructFileTree(allFiles: QuartzPluginData[], currentFilePath: string) {
+  function constructFileTree(
+    allFiles: QuartzPluginData[],
+    currentFilePath: string,
+    language: string,
+  ) {
     // Construct tree from allFiles
     fileTree = new FileNode("")
-    allFiles.forEach((file) => fileTree.add(file))
+    allFiles.forEach((file) => fileTree.add(file, language))
 
     // Execute all functions (sort, filter, map) that were provided (if none were provided, only default "sort" is applied)
     if (opts.order) {
@@ -80,7 +84,7 @@ export default ((userOpts?: Partial<Options>) => {
   }: QuartzComponentProps) => {
     if (ctx.buildId !== lastBuildId) {
       lastBuildId = ctx.buildId
-      constructFileTree(allFiles, (fileData.filePath ?? "").replaceAll(" ", "-"))
+      constructFileTree(allFiles, (fileData.filePath ?? "").replaceAll(" ", "-"), ctx.language)
     }
     return (
       <div class="explorer-container">

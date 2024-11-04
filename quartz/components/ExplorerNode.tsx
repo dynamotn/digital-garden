@@ -98,8 +98,12 @@ export class FileNode {
   }
 
   // Add new file to tree
-  add(file: QuartzPluginData) {
-    this.insert({ file: file, path: simplifySlug(file.slug!).split("/") })
+  add(file: QuartzPluginData, language: string) {
+    let slugWithoutLang = file.slug!
+    if (language != "") {
+      slugWithoutLang = slugWithoutLang.replace(new RegExp(`^${language}\/`), "")
+    }
+    this.insert({ file: file, path: simplifySlug(slugWithoutLang).split("/") })
   }
 
   /**
