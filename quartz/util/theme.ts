@@ -52,6 +52,13 @@ ${stylesheet.join("\n\n")}
   --highlight: ${theme.colors.lightMode.highlight};
   --textHighlight: ${theme.colors.lightMode.textHighlight};
 
+  --red: ${theme.colors.lightMode.red};
+  --mauve: ${theme.colors.lightMode.mauve};
+  --blue: ${theme.colors.lightMode.blue};
+  --green: ${theme.colors.lightMode.green};
+  --yellow: ${theme.colors.lightMode.mauve};
+  --peach: ${theme.colors.lightMode.peach};
+
   --headerFont: "${theme.typography.header}", ${DEFAULT_SANS_SERIF};
   --bodyFont: "${theme.typography.body}", ${DEFAULT_SANS_SERIF};
   --codeFont: "${theme.typography.code}", ${DEFAULT_MONO};
@@ -67,6 +74,13 @@ ${stylesheet.join("\n\n")}
   --tertiary: ${theme.colors.darkMode.tertiary};
   --highlight: ${theme.colors.darkMode.highlight};
   --textHighlight: ${theme.colors.darkMode.textHighlight};
+
+  --red: ${theme.colors.darkMode.red};
+  --mauve: ${theme.colors.darkMode.mauve};
+  --blue: ${theme.colors.darkMode.blue};
+  --green: ${theme.colors.darkMode.green};
+  --yellow: ${theme.colors.darkMode.mauve};
+  --peach: ${theme.colors.darkMode.peach};
 }
 `
 }
