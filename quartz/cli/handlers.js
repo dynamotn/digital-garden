@@ -426,7 +426,10 @@ export async function handleBuild(argv) {
     console.log("hint: exit with ctrl+c")
     const paths = await globby(["**/*.ts", "**/*.tsx", "**/*.scss", "package.json"])
     chokidar
-      .watch(paths, { ignoreInitial: true })
+      .watch(paths, {
+        ignoreInitial: true,
+        followSymlinks: false,
+      })
       .on("add", () => build(clientRefresh))
       .on("change", () => build(clientRefresh))
       .on("unlink", () => build(clientRefresh))
