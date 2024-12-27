@@ -78,5 +78,15 @@ export default {
       showingFirst: ({ count }) => `顯示前 ${count} 個標籤。`,
       totalTags: ({ count }) => `總共有 ${count} 個標籤。`,
     },
+    encryptedContent: {
+      loading: "正在加載...",
+      password: "密碼",
+      submit: "提交",
+      enterPassword: "此頁面預設鎖定。請輸入密碼解鎖：",
+      modernBrowser: "請使用現代瀏覽器。",
+      wrongPassword: "密碼錯誤。請重新輸入密碼解鎖：",
+      noPayload: "沒有加密的有效負載。",
+      decrypting: "解密中...",
+    },
   },
 } as const satisfies Translation

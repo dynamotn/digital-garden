@@ -80,5 +80,16 @@ export default {
       showingFirst: ({ count }) => `İlk ${count} etiket gösteriliyor.`,
       totalTags: ({ count }) => `Toplam ${count} adet etiket bulundu.`,
     },
+    encryptedContent: {
+      loading: "Yükleniyor...",
+      password: "Şifre",
+      submit: "Gönder",
+      enterPassword:
+        "Bu sayfa varsayılan olarak kilitlidir. Kilidi açmak için lütfen şifreyi girin:",
+      modernBrowser: "Lütfen modern bir tarayıcı kullanın.",
+      wrongPassword: "Yanlış şifre. Kilidi açmak için lütfen şifreyi tekrar girin:",
+      noPayload: "Şifrelenmiş yük yok.",
+      decrypting: "Şifre çözülüyor...",
+    },
   },
 } as const satisfies Translation
