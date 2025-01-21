@@ -100,5 +100,16 @@ export default {
             ? `Rasta iš viso ${count} žymos.`
             : `Rasta iš viso ${count} žymų.`,
     },
+    encryptedContent: {
+      loading: "Loading...",
+      password: "Slaptažodis",
+      submit: "Pateikti",
+      enterPassword:
+        "Šis puslapis yra užrakintas pagal numatytuosius nustatymus. Norėdami atrakinti, įveskite slaptažodį:",
+      modernBrowser: "Prašome naudoti modernią naršyklę.",
+      wrongPassword: "Neteisingas slaptažodis. Norėdami atrakinti, iš naujo įveskite slaptažodį:",
+      noPayload: "Nėra užšifruoto naudingojo krovinio.",
+      decrypting: "Iššifruojama...",
+    },
   },
 } as const satisfies Translation

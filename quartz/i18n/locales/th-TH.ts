@@ -78,5 +78,15 @@ export default {
       showingFirst: ({ count }) => `แสดง ${count} แท็กแรก`,
       totalTags: ({ count }) => `มีทั้งหมด ${count} แท็ก`,
     },
+    encryptedContent: {
+      loading: "กำลังโหลด...",
+      password: "รหัสผ่าน",
+      submit: "ส่ง",
+      enterPassword: "หน้านี้ถูกล็อคโดยค่าเริ่มต้น กรุณากรอกรหัสผ่านเพื่อปลดล็อค:",
+      modernBrowser: "กรุณาใช้เบราว์เซอร์ที่ทันสมัย",
+      wrongPassword: "รหัสผ่านผิด กรุณากรอกรหัสผ่านอีกครั้งเพื่อปลดล็อค:",
+      noPayload: "ไม่มีเพย์โหลดที่เข้ารหัส",
+      decrypting: "กำลังถอดรหัส...",
+    },
   },
 } as const satisfies Translation
