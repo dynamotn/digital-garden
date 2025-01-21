@@ -245,7 +245,7 @@ export async function renderPage(
   if (cfg.passProtected?.enabled && componentData.fileData.frontmatter?.password) {
     componentData.encryptedContent = await getEncryptedPayload(
       render(content),
-      JSON.stringify(componentData.fileData.frontmatter.password),
+      componentData.fileData.frontmatter.password.toString(),
       cfg.passProtected?.iteration,
     )
     content = <Encrypted {...componentData} />
