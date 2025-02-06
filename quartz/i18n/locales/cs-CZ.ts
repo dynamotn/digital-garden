@@ -89,6 +89,7 @@ export default {
       wrongPassword: "Nesprávné heslo. Zadejte heslo znovu pro odemknutí:",
       noPayload: "Není žádné šifrované užitečné zatížení.",
       decrypting: "Dekódování...",
+      defaultDescription: "Toto je šifrovaná stránka",
     },
   },
 } as const satisfies Translation

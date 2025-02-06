@@ -93,6 +93,7 @@ export default {
         "Verkeerd wachtwoord. Voer alstublieft uw wachtwoord opnieuw in om te ontgrendelen:",
       noPayload: "Geen versleutelde payload.",
       decrypting: "Ontsleutelen..",
+      defaultDescription: "Dit is een gecodeerde pagina",
     },
   },
 } as const satisfies Translation

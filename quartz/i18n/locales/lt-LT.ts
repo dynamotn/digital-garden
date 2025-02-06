@@ -110,6 +110,7 @@ export default {
       wrongPassword: "Neteisingas slaptažodis. Norėdami atrakinti, iš naujo įveskite slaptažodį:",
       noPayload: "Nėra užšifruoto naudingojo krovinio.",
       decrypting: "Iššifruojama...",
+      defaultDescription: "Tai yra šifruotas puslapis",
     },
   },
 } as const satisfies Translation

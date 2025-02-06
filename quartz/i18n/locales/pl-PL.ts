@@ -89,6 +89,7 @@ export default {
       wrongPassword: "Senha incorreta. Digite a senha novamente para desbloquear:",
       noPayload: "Nie ma zaszyfrowanego ładunku.",
       decrypting: "Deszyfrowanie...",
+      defaultDescription: "To jest zaszyfrowana strona",
     },
   },
 } as const satisfies Translation

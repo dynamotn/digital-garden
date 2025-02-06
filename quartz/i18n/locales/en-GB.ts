@@ -89,6 +89,7 @@ export default {
       wrongPassword: "Wrong password. Please re-enter passsword to unlock:",
       noPayload: "No encrypted payload.",
       decrypting: "Decrypting...",
+      defaultDescription: "This is encrypted page",
     },
   },
 } as const satisfies Translation

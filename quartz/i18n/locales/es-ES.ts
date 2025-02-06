@@ -90,6 +90,7 @@ export default {
       wrongPassword: "Contraseña incorrecta. Vuelva a introducir la contraseña para desbloquear:",
       noPayload: "No hay ninguna carga útil cifrada.",
       decrypting: "Descifrando...",
+      defaultDescription: "Esta es una página encriptada",
     },
   },
 } as const satisfies Translation

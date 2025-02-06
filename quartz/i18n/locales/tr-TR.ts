@@ -90,6 +90,7 @@ export default {
       wrongPassword: "Yanlış şifre. Kilidi açmak için lütfen şifreyi tekrar girin:",
       noPayload: "Şifrelenmiş yük yok.",
       decrypting: "Şifre çözülüyor...",
+      defaultDescription: "Bu şifrelenmiş bir sayfadır",
     },
   },
 } as const satisfies Translation

@@ -89,6 +89,7 @@ export default {
       wrongPassword: "Неправильний пароль. Будь ласка, введіть пароль ще раз, щоб розблокувати:",
       noPayload: "Немає зашифрованого корисного навантаження.",
       decrypting: "Розшифровка...",
+      defaultDescription: "Це зашифрована сторінка",
     },
   },
 } as const satisfies Translation

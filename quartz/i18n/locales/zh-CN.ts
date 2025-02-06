@@ -87,6 +87,7 @@ export default {
       wrongPassword: "密码错误。请重新输入密码解锁：",
       noPayload: "没有加密的有效负载。",
       decrypting: "解密中...",
+      defaultDescription: "这是加密页面",
     },
   },
 } as const satisfies Translation

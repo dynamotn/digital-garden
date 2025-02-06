@@ -89,6 +89,7 @@ export default {
         "パスワードが間違っています。ロックを解除するにはパスワードを再度入力してください:",
       noPayload: "暗号化されたペイロードはありません。",
       decrypting: "解読中...",
+      defaultDescription: "これは暗号化されたページです",
     },
   },
 } as const satisfies Translation

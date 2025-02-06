@@ -91,6 +91,7 @@ export default {
         "Mot de passe incorrect. Veuillez saisir à nouveau le mot de passe pour déverrouiller :",
       noPayload: "Aucune charge utile cryptée.",
       decrypting: "Décryptage en cours...",
+      defaultDescription: "Ceci est une page cryptée",
     },
   },
 } as const satisfies Translation

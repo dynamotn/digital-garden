@@ -90,6 +90,7 @@ export default {
       wrongPassword: "رمز عبور اشتباه است. لطفا رمز عبور را دوباره وارد کنید تا قفل باز شود:",
       noPayload: "هیچ محموله رمزگذاری شده ای وجود ندارد.",
       decrypting: "در حال رمزگشایی...",
+      defaultDescription: "این صفحه رمزگذاری شده است",
     },
   },
 } as const satisfies Translation

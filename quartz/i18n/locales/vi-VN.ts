@@ -89,6 +89,7 @@ export default {
       wrongPassword: "Sai mật khẩu. Vui lòng điền lại mật khẩu để mở khóa:",
       noPayload: "Không có nội dung được mã hóa.",
       decrypting: "Đang giải mã...",
+      defaultDescription: "Trang này đã được mã hóa",
     },
   },
 } as const satisfies Translation

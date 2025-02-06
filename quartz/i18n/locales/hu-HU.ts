@@ -88,6 +88,7 @@ export default {
       wrongPassword: "Helytelen jelszó. Kérjük, adja meg újra a jelszót a feloldáshoz:",
       noPayload: "Nincs titkosított hasznos teher.",
       decrypting: "Dekódolás...",
+      defaultDescription: "Ez egy titkosított oldal",
     },
   },
 } as const satisfies Translation

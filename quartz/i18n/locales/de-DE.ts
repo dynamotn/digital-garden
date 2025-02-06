@@ -91,6 +91,7 @@ export default {
         "Falsches Passwort. Bitte geben Sie das Passwort erneut ein, um zu entsperren:",
       noPayload: "Keine verschlüsselte Nutzlast.",
       decrypting: "Entschlüsseln...",
+      defaultDescription: "Dies ist eine verschlüsselte Seite",
     },
   },
 } as const satisfies Translation

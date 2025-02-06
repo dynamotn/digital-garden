@@ -90,6 +90,7 @@ export default {
       wrongPassword: "Password errato. Si prega di reinserire la password per sbloccare:",
       noPayload: "Nessun payload crittografato.",
       decrypting: "Decifrazione in corso...",
+      defaultDescription: "Questa è una pagina crittografata",
     },
   },
 } as const satisfies Translation

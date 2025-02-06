@@ -94,6 +94,7 @@ export default {
       wrongPassword: "خاطئة. يرجى إعادة إدخال كلمة المرور لفتح القفل:",
       noPayload: "حمولة مشفرة.",
       decrypting: "جاري فك التشفير...",
+      defaultDescription: "هذه صفحة مشفرة",
     },
   },
 } as const satisfies Translation

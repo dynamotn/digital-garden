@@ -89,6 +89,7 @@ export interface Translation {
       wrongPassword: string
       noPayload: string
       decrypting: string
+      defaultDescription: string
     }
   }
 }

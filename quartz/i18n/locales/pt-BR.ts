@@ -89,6 +89,7 @@ export default {
       wrongPassword: "Parolă greșită. Vă rugăm să reintroduceți parola pentru a debloca:",
       noPayload: "Não há nenhuma carga útil criptografada.",
       decrypting: "Descifrando...",
+      defaultDescription: "Esta é uma página criptografada",
     },
   },
 } as const satisfies Translation

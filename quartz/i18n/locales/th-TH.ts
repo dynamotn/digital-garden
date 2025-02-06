@@ -87,6 +87,7 @@ export default {
       wrongPassword: "รหัสผ่านผิด กรุณากรอกรหัสผ่านอีกครั้งเพื่อปลดล็อค:",
       noPayload: "ไม่มีเพย์โหลดที่เข้ารหัส",
       decrypting: "กำลังถอดรหัส...",
+      defaultDescription: "หน้านี้เป็นหน้าเข้ารหัส",
     },
   },
 } as const satisfies Translation

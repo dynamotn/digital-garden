@@ -92,6 +92,7 @@ export default {
       wrongPassword: "Неверный пароль. Пожалуйста, введите пароль еще раз для разблокировки:",
       noPayload: "Нет зашифрованной полезной нагрузки.",
       decrypting: "Расшифровка...",
+      defaultDescription: "Это зашифрованная страница",
     },
   },
 } as const satisfies Translation

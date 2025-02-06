@@ -90,6 +90,7 @@ export default {
       wrongPassword: "Contrasenya incorrecta. Introduïu de nou la contrasenya per desbloquejar:",
       noPayload: "No hi ha càrrega útil xifrada.",
       decrypting: "Desxifrant...",
+      defaultDescription: "Aquesta és una pàgina xifrada",
     },
   },
 } as const satisfies Translation

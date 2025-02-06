@@ -87,6 +87,7 @@ export default {
       wrongPassword: "密碼錯誤。請重新輸入密碼解鎖：",
       noPayload: "沒有加密的有效負載。",
       decrypting: "解密中...",
+      defaultDescription: "這是加密頁面",
     },
   },
 } as const satisfies Translation

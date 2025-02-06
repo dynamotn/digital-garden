@@ -87,6 +87,7 @@ export default {
       wrongPassword: "비밀번호가 잘못되었습니다. 잠금을 해제하려면 암호를 다시 입력하십시오:",
       noPayload: "암호화된 페이로드가 없습니다.",
       decrypting: "해독 중...",
+      defaultDescription: "이 페이지는 암호화된 페이지입니다",
     },
   },
 } as const satisfies Translation

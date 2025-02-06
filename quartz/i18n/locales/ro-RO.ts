@@ -91,6 +91,7 @@ export default {
       wrongPassword: "Неправильний пароль. Будь ласка, введіть пароль ще раз, щоб розблокувати:",
       noPayload: "Nu există nicio sarcină utilă criptată.",
       decrypting: "Decriptare...",
+      defaultDescription: "Aceasta este o pagină criptată",
     },
   },
 } as const satisfies Translation
